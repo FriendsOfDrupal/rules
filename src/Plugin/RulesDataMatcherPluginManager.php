@@ -13,7 +13,7 @@ use Drupal\Core\Plugin\DefaultPluginManager;
 /**
  * Plugin manager for all Rules' DataMatchers.
  *
- * @see \Drupal\rules\Matcher\MatcherInterface
+ * @see \Drupal\rules\DataMatcher\DataMatcherInterface
  */
 class RulesDataMatcherPluginManager extends DefaultPluginManager {
 
@@ -22,7 +22,7 @@ class RulesDataMatcherPluginManager extends DefaultPluginManager {
    */
   public function __construct(\Traversable $namespaces, ModuleHandlerInterface $module_handler, $plugin_definition_annotation_name = 'Drupal\rules\Annotation\RulesDataMatcher') {
     $this->alterInfo('rules_data_matcher');
-    parent::__construct('Plugin/RulesDataMatcher', $namespaces, $module_handler, 'Drupal\rules\Matcher\MatcherInterface', $plugin_definition_annotation_name);
+    parent::__construct('Plugin/RulesDataMatcher', $namespaces, $module_handler, 'Drupal\rules\DataMatcher\DataMatcherInterface', $plugin_definition_annotation_name);
   }
 
 }

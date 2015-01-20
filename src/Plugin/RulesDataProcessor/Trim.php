@@ -8,7 +8,7 @@
 namespace Drupal\rules\Plugin\RulesDataProcessor;
 
 use Drupal\Core\Plugin\PluginBase;
-use Drupal\rules\Engine\RulesDataProcessorInterface;
+use Drupal\rules\DataProcessor\DataProcessorInterface;
 
 /**
  * Defines a string trim processor.
@@ -18,7 +18,7 @@ use Drupal\rules\Engine\RulesDataProcessorInterface;
  *   label = @Translation("A string trimming processor.")
  * )
  */
-class Trim extends PluginBase implements RulesDataProcessorInterface {
+class Trim extends PluginBase implements DataProcessorInterface {
 
   /**
    * @param string $value

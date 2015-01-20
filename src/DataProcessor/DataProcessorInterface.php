@@ -2,10 +2,10 @@
 
 /**
  * @file
- * Contains \Drupal\rules\Context\DataProcessorInterface.
+ * Contains \Drupal\rules\DataProcessor\DataProcessorInterface.
  */
 
-namespace Drupal\rules\Context;
+namespace Drupal\rules\DataProcessor;
 
 /**
  * Interface for Rules data processor plugins.

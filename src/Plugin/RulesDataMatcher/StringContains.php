@@ -18,6 +18,7 @@ namespace Drupal\rules\Plugin\RulesDataMatcher;
  * )
  */
 class StringContains extends RulesDataMatcherBase {
+
   /**
    * @var int
    */
@@ -37,4 +38,5 @@ class StringContains extends RulesDataMatcherBase {
   protected function doMatch($subject, $object) {
     return FALSE !== strpos($subject, $object, $this->offset);
   }
+
 }

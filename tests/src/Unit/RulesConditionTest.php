@@ -159,6 +159,7 @@ class RulesConditionTest extends RulesUnitTestBase {
       ->will($this->returnValue($this->trueCondition));
 
     $data_processor = $this->getMock('Drupal\rules\Context\DataProcessorInterface');
+    $data_processor = $this->getMock('Drupal\rules\DataProcessor\DataProcessorInterface');
     $data_processor->expects($this->once())
       ->method('process')
       ->with('old_value')

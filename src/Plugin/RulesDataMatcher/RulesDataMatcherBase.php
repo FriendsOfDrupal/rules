@@ -10,14 +10,14 @@ namespace Drupal\rules\Plugin\RulesDataMatcher;
 use Symfony\Component\DependencyInjection\ContainerInterface;
 use Drupal\Core\Plugin\PluginBase;
 use Drupal\Core\Plugin\ContainerFactoryPluginInterface;
-use Drupal\rules\Matcher\MatcherInterface;
+use Drupal\rules\DataMatcher\DataMatcherInterface;
 use Drupal\rules\Plugin\RulesDataProcessorManager;
-use Drupal\rules\Engine\RulesDataProcessorInterface;
+use Drupal\rules\DataProcessor\DataProcessorInterface;
 
 /**
  * Base class for rules conditions.
  */
-abstract class RulesDataMatcherBase extends PluginBase implements ContainerFactoryPluginInterface, MatcherInterface {
+abstract class RulesDataMatcherBase extends PluginBase implements ContainerFactoryPluginInterface, DataMatcherInterface {
 
   protected $subjectProcessors = array();
   protected $objectProcessors = array();
@@ -112,11 +112,11 @@ abstract class RulesDataMatcherBase extends PluginBase implements ContainerFacto
     return $value;
   }
 
-  protected function addSubjectProcessor(RulesDataProcessorInterface $processor) {
+  protected function addSubjectProcessor(DataProcessorInterface $processor) {
     $this->subjectProcessors[] = $processor;
   }
 
-  protected function addObjectProcessor(RulesDataProcessorInterface $processor) {
+  protected function addObjectProcessor(DataProcessorInterface $processor) {
     $this->objectProcessors[] = $processor;
   }
 

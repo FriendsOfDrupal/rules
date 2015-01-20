@@ -2,15 +2,16 @@
 
 /**
  * @file
- * Contains \Drupal\rules\Matcher\MatcherInterface.
+ * Contains \Drupal\rules\DataMatcher\DataMatcherInterface.
  */
 
-namespace Drupal\rules\Matcher;
+namespace Drupal\rules\DataMatcher;
 
 /**
- * MatcherInterface is an interface for strategies to match a value.
+ * DataMatcherInterface is an interface for strategies to match a value.
  */
-interface MatcherInterface {
+interface DataMatcherInterface {
+
   /**
    * Decides whether the rule(s) implemented by the strategy matches the supplied value.
    *
@@ -20,4 +21,5 @@ interface MatcherInterface {
    * @return boolean true if the values match, false otherwise
    */
   public function match($subject, $object);
+
 }

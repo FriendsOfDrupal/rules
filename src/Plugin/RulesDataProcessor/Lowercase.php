@@ -8,7 +8,7 @@
 namespace Drupal\rules\Plugin\RulesDataProcessor;
 
 use Drupal\Core\Plugin\PluginBase;
-use Drupal\rules\Engine\RulesDataProcessorInterface;
+use Drupal\rules\DataProcessor\DataProcessorInterface;
 
 /**
  * Defines a string lowercase processor.
@@ -18,7 +18,7 @@ use Drupal\rules\Engine\RulesDataProcessorInterface;
  *   label = @Translation("A string lowercase processor.")
  * )
  */
-class Lowercase extends PluginBase implements RulesDataProcessorInterface {
+class Lowercase extends PluginBase implements DataProcessorInterface {
 
   /**
    * @param string $value

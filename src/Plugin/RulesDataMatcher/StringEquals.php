@@ -25,4 +25,5 @@ class StringEquals extends RulesDataMatcherBase {
   protected function doMatch($subject, $object) {
     return $object === $subject;
   }
+
 }

@@ -10,7 +10,7 @@ namespace Drupal\rules\Plugin\Condition;
 use Symfony\Component\DependencyInjection\ContainerInterface;
 use Drupal\Core\Plugin\ContainerFactoryPluginInterface;
 use Drupal\rules\Engine\RulesConditionBase;
-use Drupal\rules\Matcher\MatcherInterface;
+use Drupal\rules\DataMatcher\DataMatcherInterface;
 use Drupal\rules\Plugin\RulesDataMatcherPluginManager;
 
 /**
@@ -96,8 +96,8 @@ class TextMatches extends RulesConditionBase implements ContainerFactoryPluginIn
     // Throws PluginNotFoundException if it can't find the plugin
     $matcher = $this->dataMatcherManager->createInstance($contextData->getCastedValue());
 
-    if (!is_object($matcher) || !$matcher instanceof MatcherInterface) {
-      throw new \RuntimeException('Matcher is not an instance of MatcherInterface.');
+    if (!is_object($matcher) || !$matcher instanceof DataMatcherInterface) {
+      throw new \RuntimeException('Matcher is not an instance of DataMatcherInterface.');
     }
 
     return $matcher->match($this->getContextValue('data'), $this->getContextValue('value'));

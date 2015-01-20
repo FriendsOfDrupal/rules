@@ -53,4 +53,5 @@ class Regexp extends RulesDataMatcherBase {
 
     return 1 === preg_match($object, $subject, $matches, $this->flags, $this->offset);
   }
+
 }

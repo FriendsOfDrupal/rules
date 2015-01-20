@@ -18,6 +18,7 @@ namespace Drupal\rules\Plugin\RulesDataMatcher;
  * )
  */
 class Levenshtein extends RulesDataMatcherBase {
+
   private $threshold;
 
   /**
@@ -43,4 +44,5 @@ class Levenshtein extends RulesDataMatcherBase {
   protected function doMatch($subject, $object) {
     return $this->getThreshold() >= levenshtein($subject, $object);
   }
+
 }

@@ -18,7 +18,7 @@ class TypeTest extends RulesDataMatcherTestBase {
   /**
    * The condition to be tested.
    *
-   * @var \Drupal\rules\Plugin\RulesDataMatcher\MatcherInterface
+   * @var \Drupal\rules\DataMatcher\DataMatcherInterface
    */
   protected $matcher;
 
