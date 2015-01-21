@@ -99,7 +99,7 @@ class TextMatches extends RulesConditionBase implements ContainerFactoryPluginIn
     if (!is_object($matcher) || !$matcher instanceof DataMatcherInterface) {
       throw new \RuntimeException('Matcher is not an instance of DataMatcherInterface.');
     }
-
+// var_dump(get_class($matcher), $this->getContextValue('data'), $this->getContextValue('value'));
     return $matcher->match($this->getContextValue('data'), $this->getContextValue('value'));
   }
 

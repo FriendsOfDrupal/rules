@@ -60,11 +60,11 @@ class TextMatchesTest extends RulesIntegrationTestBase {
 
   public function matchesProvider() {
     return array(
-      array(TRUE, 'rules_data_matcher_levenshtein', 'foo', 'foo'),
-      array(FALSE, 'rules_data_matcher_levenshtein', 'foo', 'bar'),
+      array(TRUE, 'rules_data_matcher_string_levenshtein', 'foo', 'foo'),
+      array(FALSE, 'rules_data_matcher_string_levenshtein', 'foo', 'bar'),
 
-      array(TRUE, 'rules_data_matcher_regexp', 'foo', '/^fo/'),
-      array(FALSE, 'rules_data_matcher_regexp', 'foo', '/fu/'),
+      array(TRUE, 'rules_data_matcher_string_regexp', 'foo', '/^fo/'),
+      array(FALSE, 'rules_data_matcher_string_regexp', 'foo', '/fu/'),
 
       array(TRUE, 'rules_data_matcher_string_contains', 'foo', 'fo'),
       array(FALSE, 'rules_data_matcher_string_contains', 'foo', 'ba'),

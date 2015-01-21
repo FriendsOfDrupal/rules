@@ -5,11 +5,10 @@
  * Contains \Drupal\Tests\rules\Unit\Plugin\RulesDataMatcher\LevenshteinTest.
  */
 
-namespace Drupal\Tests\rules\Unit\Plugin\RulesDataMatcher;
+namespace Drupal\Tests\rules\Unit\Plugin\RulesDataMatcher\String;
 
-use Drupal\Tests\rules\Unit\RulesUnitTestBase;
-use Drupal\rules\Plugin\RulesDataMatcher\Levenshtein;
-use Drupal\rules\Plugin\RulesDataProcessor\Lowercase;
+use Drupal\Tests\rules\Unit\Plugin\RulesDataMatcher\RulesDataMatcherTestBase;
+use Drupal\rules\Plugin\RulesDataMatcher\String\Levenshtein;
 
 /**
  * @coversDefaultClass \Drupal\rules\RulesDataMatcher\LevenshteinMatcher

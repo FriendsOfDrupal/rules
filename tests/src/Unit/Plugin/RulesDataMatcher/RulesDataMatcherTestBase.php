@@ -36,4 +36,5 @@ abstract class RulesDataMatcherTestBase extends RulesUnitTestBase {
 
     parent::tearDown();
   }
+
 }

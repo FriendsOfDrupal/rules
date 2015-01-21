@@ -2,32 +2,22 @@
 
 /**
  * @file
- * Contains \Drupal\rules\Plugin\RulesDataMatcher\Regexp.
+ * Contains \Drupal\rules\DataMatcher\RegexpDataMatcher.
  */
 
-namespace Drupal\rules\Plugin\RulesDataMatcher;
+namespace Drupal\rules\DataMatcher;
 
-/**
- * Defines a string regular expression matcher.
- *
- * @RulesDataMatcher(
- *   id = "rules_data_matcher_regexp",
- *   label = @Translation("A regular expression matcher."),
- *   subject_type = "string",
- *   object_type = "string"
- * )
- */
-class Regexp extends RulesDataMatcherBase {
+class StringRegexpDataMatcher extends StringDataMatcher {
 
   /**
    * @var int
    */
-  private $flags;
+  private $flags = 0;
 
   /**
    * @var int
    */
-  private $offset;
+  private $offset = 0;
 
   /**
    *

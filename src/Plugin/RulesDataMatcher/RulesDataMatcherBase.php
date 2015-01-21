@@ -7,20 +7,18 @@
 
 namespace Drupal\rules\Plugin\RulesDataMatcher;
 
-use Symfony\Component\DependencyInjection\ContainerInterface;
-use Drupal\Core\Plugin\PluginBase;
 use Drupal\Core\Plugin\ContainerFactoryPluginInterface;
+use Drupal\Core\Plugin\PluginBase;
+use Drupal\rules\DelegatorInterface;
+use Drupal\rules\DataMatcher\DataMatcherBuilder;
 use Drupal\rules\DataMatcher\DataMatcherInterface;
 use Drupal\rules\Plugin\RulesDataProcessorManager;
-use Drupal\rules\DataProcessor\DataProcessorInterface;
+use Symfony\Component\DependencyInjection\ContainerInterface;
 
 /**
- * Base class for rules conditions.
+ * Base class for rules data matchers.
  */
-abstract class RulesDataMatcherBase extends PluginBase implements ContainerFactoryPluginInterface, DataMatcherInterface {
-
-  protected $subjectProcessors = array();
-  protected $objectProcessors = array();
+abstract class RulesDataMatcherBase extends PluginBase implements ContainerFactoryPluginInterface, DataMatcherInterface, DelegatorInterface {
 
   /**
    * The alias manager service.
@@ -30,7 +28,14 @@ abstract class RulesDataMatcherBase extends PluginBase implements ContainerFacto
   protected $dataProcessorManager;
 
   /**
-   * Constructs a PathHasAlias object.
+   * The DataMatcher delegate.
+   *
+   * @var \Drupal\rules\DataManager\DataManagerInterface
+   */
+  protected $dataMatcherDelegate;
+
+  /**
+   * Constructs a RulesDataMatcher object.
    *
    * @param array $configuration
    *   A configuration array containing information about the plugin instance.
@@ -43,7 +48,26 @@ abstract class RulesDataMatcherBase extends PluginBase implements ContainerFacto
    */
   public function __construct(array $configuration, $plugin_id, $plugin_definition, RulesDataProcessorManager $data_processor_manager) {
     parent::__construct($configuration, $plugin_id, $plugin_definition);
+
     $this->dataProcessorManager = $data_processor_manager;
+
+    $this->dataMatcherDelegate = $this->createDelegateInstance();
+  }
+
+  /**
+   * Proxy all the calls not defined in an interface.
+   *
+   * @throws RuntimeException
+   *   If called method does not exist.
+   *
+   * @return mixed
+   */
+  public function __call($name, $arguments) {
+    if (method_exists($this->dataMatcherDelegate, $name)) {
+        return call_user_func_array(array($this->dataMatcherDelegate, $name), $arguments);
+    }
+
+    throw new \RuntimeException("Method '$name' does not exist.");
   }
 
   /**
@@ -59,75 +83,10 @@ abstract class RulesDataMatcherBase extends PluginBase implements ContainerFacto
   }
 
   /**
-   * {@inheritdoc}
+   * Forwards matching to the delegate DataMatcher.
    */
   public function match($subject, $object) {
-    return $this->doMatch(
-      $this->process($subject, $this->subjectProcessors),
-      $this->process($object, $this->objectProcessors)
-    );
+    return $this->dataMatcherDelegate->match($subject, $object);
   }
-
-  /**
-   * Set the flag for case sensitive.
-   *
-   * @todo move this to a StringMatcherTrait
-   *
-   * @param boolean $caseSensitive
-   */
-  public function setCaseSensitive($caseSensitive) {
-    if (TRUE === $caseSensitive) {
-      return;
-    }
-
-    $processor = $this->dataProcessorManager->createInstance('rules_data_processor_lowercase');
-
-    $this->addSubjectProcessor($processor);
-    $this->addObjectProcessor($processor);
-  }
-
-  /**
-   * Set the flag for trim.
-   *
-   * @todo move this to a StringMatcherTrait
-   *
-   * @param boolean $trimmed
-   */
-  public function setTrimmed($trimmed) {
-    if (FALSE === $trimmed) {
-      return;
-    }
-
-    $processor = $this->dataProcessorManager->createInstance('rules_data_processor_trim');
-
-    $this->addSubjectProcessor($processor);
-    $this->addObjectProcessor($processor);
-  }
-
-  protected function process($value, array $processors = array()) {
-    array_walk($processors, function ($processor) use (&$value) {
-      $value = $processor->process($value);
-    });
-
-    return $value;
-  }
-
-  protected function addSubjectProcessor(DataProcessorInterface $processor) {
-    $this->subjectProcessors[] = $processor;
-  }
-
-  protected function addObjectProcessor(DataProcessorInterface $processor) {
-    $this->objectProcessors[] = $processor;
-  }
-
-  /**
-   * Perform the actual matching.
-   *
-   * @param mixed $subject
-   * @param mixed $object
-   *
-   * @return boolean
-   */
-  abstract protected function doMatch($subject, $object);
 
 }

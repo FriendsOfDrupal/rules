@@ -7,8 +7,8 @@
 
 namespace Drupal\rules\Plugin\RulesDataProcessor;
 
-use Drupal\Core\Plugin\PluginBase;
-use Drupal\rules\DataProcessor\DataProcessorInterface;
+use Drupal\rules\DataProcessor\TrimDataProcessor;
+use Drupal\rules\DelegatorInterface;
 
 /**
  * Defines a string trim processor.
@@ -18,13 +18,13 @@ use Drupal\rules\DataProcessor\DataProcessorInterface;
  *   label = @Translation("A string trimming processor.")
  * )
  */
-class Trim extends PluginBase implements DataProcessorInterface {
+class Trim extends RulesDataProcessorBase {
 
   /**
-   * @param string $value
+   * {@inheritdoc}
    */
-  public function process($value) {
-    return trim($value);
+  public function createDelegateInstance() {
+    return new TrimDataProcessor();
   }
 
 }

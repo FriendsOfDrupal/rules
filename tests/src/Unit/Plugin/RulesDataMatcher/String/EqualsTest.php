@@ -5,12 +5,13 @@
  * Contains \Drupal\Tests\rules\Unit\Plugin\RulesDataMatcher\StringEqualsTest.
  */
 
-namespace Drupal\Tests\rules\Unit\Plugin\RulesDataMatcher;
+namespace Drupal\Tests\rules\Unit\Plugin\RulesDataMatcher\String;
 
-use Drupal\rules\Plugin\RulesDataMatcher\StringEquals;
+use Drupal\Tests\rules\Unit\Plugin\RulesDataMatcher\RulesDataMatcherTestBase;
+use Drupal\rules\Plugin\RulesDataMatcher\String\Equals;
 
 /**
- * @coversDefaultClass \Drupal\rules\Plugin\RulesDataMatcher\StringEquals
+ * @coversDefaultClass \Drupal\rules\Plugin\RulesDataMatcher\String\Equals
  * @group rules
  */
 class StringEqualsTest extends RulesDataMatcherTestBase {
@@ -18,7 +19,7 @@ class StringEqualsTest extends RulesDataMatcherTestBase {
    * @dataProvider matchesProvider
    */
   public function testMatch($expectedMatchResult, $trim, $case_sensitive, $subject, $object) {
-    $matcher = new StringEquals([], 'foo_bar', [], $this->dataProcessorManager);
+    $matcher = new Equals([], 'foo_bar', [], $this->dataProcessorManager);
 
     $matcher->setCaseSensitive($case_sensitive);
     $matcher->setTrimmed($trim);

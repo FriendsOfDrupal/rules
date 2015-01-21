@@ -5,9 +5,10 @@
  * Contains \Drupal\Tests\rules\Unit\Plugin\RulesDataMatcher\RegexpTest.
  */
 
-namespace Drupal\Tests\rules\Unit\Plugin\RulesDataMatcher;
+namespace Drupal\Tests\rules\Unit\Plugin\RulesDataMatcher\String;
 
-use Drupal\rules\Plugin\RulesDataMatcher\Regexp;
+use Drupal\Tests\rules\Unit\Plugin\RulesDataMatcher\RulesDataMatcherTestBase;
+use Drupal\rules\Plugin\RulesDataMatcher\String\Regexp;
 
 /**
  * @coversDefaultClass \Drupal\rules\Plugin\RulesDataMatcher\RegexpMatcher

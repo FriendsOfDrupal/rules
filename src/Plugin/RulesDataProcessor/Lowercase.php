@@ -7,8 +7,7 @@
 
 namespace Drupal\rules\Plugin\RulesDataProcessor;
 
-use Drupal\Core\Plugin\PluginBase;
-use Drupal\rules\DataProcessor\DataProcessorInterface;
+use Drupal\rules\DataProcessor\LowercaseDataProcessor;
 
 /**
  * Defines a string lowercase processor.
@@ -18,13 +17,13 @@ use Drupal\rules\DataProcessor\DataProcessorInterface;
  *   label = @Translation("A string lowercase processor.")
  * )
  */
-class Lowercase extends PluginBase implements DataProcessorInterface {
+class Lowercase extends RulesDataProcessorBase {
 
   /**
-   * @param string $value
+   * {@inheritdoc}
    */
-  public function process($value) {
-    return strtolower($value);
+  public function createDelegateInstance() {
+    return new LowercaseDataProcessor();
   }
 
 }

@@ -2,23 +2,16 @@
 
 /**
  * @file
- * Contains \Drupal\rules\Plugin\RulesDataMatcher\Levenshtein.
+ * Contains \Drupal\rules\DataMatcher\String\LevenshteinDataMatcher.
  */
 
-namespace Drupal\rules\Plugin\RulesDataMatcher;
+namespace Drupal\rules\DataMatcher;
 
-/**
- * Defines a levenshtein distance matcher.
- *
- * @RulesDataMatcher(
- *   id = "rules_data_matcher_levenshtein",
- *   label = @Translation("A Levenshtein distance matcher."),
- *   subject_type = "string",
- *   object_type = "string"
- * )
- */
-class Levenshtein extends RulesDataMatcherBase {
+class StringLevenshteinDataMatcher extends StringDataMatcher {
 
+  /**
+   * @var int
+   */
   private $threshold;
 
   /**
@@ -31,6 +24,7 @@ class Levenshtein extends RulesDataMatcherBase {
   }
 
   /**
+   * Return the threshold value for the levenshtein function.
    *
    * @return int
    */

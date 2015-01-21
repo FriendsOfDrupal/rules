@@ -2,10 +2,12 @@
 
 /**
  * @file
- * Contains \Drupal\rules\Plugin\RulesDataMatcher\Type.
+ * Contains \Drupal\rules\Plugin\RulesDataMatcher\Object\Type.
  */
 
 namespace Drupal\rules\Plugin\RulesDataMatcher;
+
+use Drupal\rules\DataMatcher\TypeDataMatcher;
 
 /**
  * Defines a type matcher.
@@ -22,16 +24,8 @@ class Type extends RulesDataMatcherBase {
   /**
    * {@inheritdoc}
    */
-  protected function doMatch($subject, $object) {
-    if (is_object($subject) && $subject instanceof $object) {
-      return TRUE;
-    }
-
-    if ($object === gettype($subject)) {
-      return TRUE;
-    }
-
-    return FALSE;
+  public function createDelegateInstance() {
+    return TypeDataMatcher::create();
   }
 
 }

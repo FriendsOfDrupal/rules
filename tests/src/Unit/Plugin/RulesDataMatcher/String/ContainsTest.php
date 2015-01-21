@@ -2,23 +2,24 @@
 
 /**
  * @file
- * Contains \Drupal\Tests\rules\Unit\Plugin\RulesDataMatcher\StringContainsTest.
+ * Contains \Drupal\Tests\rules\Unit\Plugin\RulesDataMatcher\String\ContainsTest.
  */
 
-namespace Drupal\Tests\rules\Unit\Plugin\RulesDataMatcher;
+namespace Drupal\Tests\rules\Unit\Plugin\RulesDataMatcher\String;
 
-use Drupal\rules\Plugin\RulesDataMatcher\StringContains;
+use Drupal\Tests\rules\Unit\Plugin\RulesDataMatcher\RulesDataMatcherTestBase;
+use Drupal\rules\Plugin\RulesDataMatcher\String\Contains;
 
 /**
- * @coversDefaultClass \Drupal\rules\Plugin\RulesDataMatcher\StringContains
+ * @coversDefaultClass \Drupal\rules\Plugin\RulesDataMatcher\String\Contains
  * @group rules
  */
-class StringContainsTest extends RulesDataMatcherTestBase {
+class ContainsTest extends RulesDataMatcherTestBase {
   /**
    * @dataProvider caseSensitiveMatchesProvider
    */
   public function testCaseSensitiveMatch($expectedMatchResult, $subject, $object) {
-    $matcher = new StringContains([], 'foo_bar', [], $this->dataProcessorManager);
+    $matcher = new Contains([], 'foo_bar', [], $this->dataProcessorManager);
 
     $matcher->setCaseSensitive(TRUE);
 
@@ -29,7 +30,7 @@ class StringContainsTest extends RulesDataMatcherTestBase {
    * @dataProvider caseInsensitiveMatchesProvider
    */
   public function testCaseInsensitiveMatch($expectedMatchResult, $subject, $object) {
-    $matcher = new StringContains([], 'foo_bar', [], $this->dataProcessorManager);
+    $matcher = new Contains([], 'foo_bar', [], $this->dataProcessorManager);
 
     $matcher->setCaseSensitive(FALSE);
 
