@@ -26,7 +26,7 @@ interface StringDataMatcherInterface extends DataMatcherInterface {
    * @param int $field
    *   What field the Case Sensitiveness should not be applied to.
    */
-  public function unsetCaseSensitive($field = DataMatcherInterface::FIELD_BOTH);
+  public function setCaseInsensitive($field = DataMatcherInterface::FIELD_BOTH);
 
   /**
    * Set what fields should be trimmed.

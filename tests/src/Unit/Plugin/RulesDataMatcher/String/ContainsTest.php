@@ -9,6 +9,7 @@ namespace Drupal\Tests\rules\Unit\Plugin\RulesDataMatcher\String;
 
 use Drupal\Tests\rules\Unit\Plugin\RulesDataMatcher\RulesDataMatcherTestBase;
 use Drupal\rules\Plugin\RulesDataMatcher\String\Contains;
+use Drupal\rules\DataMatcher\DataMatcherInterface;
 
 /**
  * @coversDefaultClass \Drupal\rules\Plugin\RulesDataMatcher\String\Contains
@@ -16,12 +17,22 @@ use Drupal\rules\Plugin\RulesDataMatcher\String\Contains;
  */
 class ContainsTest extends RulesDataMatcherTestBase {
   /**
+   * @expectedException InvalidArgumentException
+   * @expectedExceptionMessage Argument "$fields" should be of type int.
+   */
+  public function testSetCaseSensitive() {
+    $matcher = new Contains([], 'foo_bar', [], $this->dataProcessorManager);
+
+    $matcher->setCaseSensitive('foo');
+  }
+
+  /**
    * @dataProvider caseSensitiveMatchesProvider
    */
   public function testCaseSensitiveMatch($expectedMatchResult, $subject, $object) {
     $matcher = new Contains([], 'foo_bar', [], $this->dataProcessorManager);
 
-    $matcher->setCaseSensitive(TRUE);
+    $matcher->setCaseSensitive();
 
     $this->assertSame($expectedMatchResult, $matcher->match($subject, $object));
   }
@@ -32,7 +43,7 @@ class ContainsTest extends RulesDataMatcherTestBase {
   public function testCaseInsensitiveMatch($expectedMatchResult, $subject, $object) {
     $matcher = new Contains([], 'foo_bar', [], $this->dataProcessorManager);
 
-    $matcher->setCaseSensitive(FALSE);
+    $matcher->setCaseInsensitive();
 
     $this->assertSame($expectedMatchResult, $matcher->match($subject, $object));
   }

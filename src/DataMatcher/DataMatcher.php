@@ -52,11 +52,11 @@ abstract class DataMatcher implements DataMatcherInterface {
    */
   protected function addFieldsProcessor($id, $fields, DataProcessorInterface $dataProcessor) {
     if (in_array($fields, [DataMatcherInterface::FIELD_SUBJECT, DataMatcherInterface::FIELD_BOTH], TRUE)) {
-        $this->subjectProcessors[] = $dataProcessor;
+        $this->subjectProcessors->append($dataProcessor);
     }
 
     if (in_array($fields, [DataMatcherInterface::FIELD_OBJECT, DataMatcherInterface::FIELD_BOTH], TRUE)) {
-        $this->objectProcessors[] = $dataProcessor;
+        $this->objectProcessors->append($dataProcessor);
     }
   }
 

@@ -21,8 +21,17 @@ class StringEqualsTest extends RulesDataMatcherTestBase {
   public function testMatch($expectedMatchResult, $trim, $case_sensitive, $subject, $object) {
     $matcher = new Equals([], 'foo_bar', [], $this->dataProcessorManager);
 
-    $matcher->setCaseSensitive($case_sensitive);
-    $matcher->setTrimmed($trim);
+    if ($case_sensitive) {
+      $matcher->setCaseSensitive();
+    } else {
+      $matcher->setCaseInsensitive();
+    }
+
+    if ($trim) {
+      $matcher->setTrimmed();
+    } else {
+      $matcher->unsetTrimmed();
+    }
 
     $this->assertSame($expectedMatchResult, $matcher->match($subject, $object));
   }

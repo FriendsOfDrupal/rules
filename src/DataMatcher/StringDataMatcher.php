@@ -22,7 +22,7 @@ abstract class StringDataMatcher extends DataMatcher implements StringDataMatche
    */
   public function setCaseSensitive($fields = DataMatcherInterface::FIELD_BOTH)
   {
-    $this->addFieldsProcessor(self::MATCHER_ID_CASE_SENSITIVE, $fields, new LowercaseDataProcessor());
+    $this->removeFieldsProcessor(self::MATCHER_ID_CASE_SENSITIVE, $fields);
   }
 
   /**
@@ -30,9 +30,9 @@ abstract class StringDataMatcher extends DataMatcher implements StringDataMatche
    *
    * @param int $fields
    */
-  public function unsetCaseSensitive($fields = DataMatcherInterface::FIELD_BOTH)
+  public function setCaseInsensitive($fields = DataMatcherInterface::FIELD_BOTH)
   {
-    $this->removeFieldsProcessor(self::MATCHER_ID_CASE_SENSITIVE, $fields);
+    $this->addFieldsProcessor(self::MATCHER_ID_CASE_SENSITIVE, $fields, new LowercaseDataProcessor());
   }
 
   /**

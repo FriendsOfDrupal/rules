@@ -23,7 +23,7 @@ class LevenshteinTest extends RulesDataMatcherTestBase {
     $matcher = new Levenshtein([], 'foo_bar', [], $this->dataProcessorManager);
 
     $matcher->setThreshold($threshold);
-    $matcher->setCaseSensitive(TRUE);
+    $matcher->setCaseSensitive();
 
     $this->assertSame($expectedMatchResult, $matcher->match($subject, $object));
   }
@@ -35,7 +35,7 @@ class LevenshteinTest extends RulesDataMatcherTestBase {
     $matcher = new Levenshtein([], 'foo_bar', [], $this->dataProcessorManager);
 
     $matcher->setThreshold($threshold);
-    $matcher->setCaseSensitive(FALSE);
+    $matcher->setCaseInsensitive();
 
     $this->assertSame($expectedMatchResult, $matcher->match($subject, $object));
   }
