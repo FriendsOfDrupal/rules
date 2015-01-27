@@ -2,18 +2,19 @@
 
 /**
  * @file
- * Contains \Drupal\Tests\rules\Unit\Plugin\RulesDataMatcher\TypeTest.
+ * Contains \Drupal\Tests\rules\Unit\DataMatcher\TypeDataMatcherTest.
  */
 
-namespace Drupal\Tests\rules\Unit\Plugin\RulesDataMatcher;
+namespace Drupal\Tests\rules\Unit\DataMatcher;
 
-use Drupal\rules\Plugin\RulesDataMatcher\Type;
+use Drupal\rules\DataMatcher\TypeDataMatcher;
+use Drupal\Tests\rules\Unit\RulesUnitTestBase;
 
 /**
- * @coversDefaultClass \Drupal\rules\Plugin\RulesDataMatcher\Type
+ * @coversDefaultClass \Drupal\rules\DataMatcher\TypeDataMatcher
  * @group rules
  */
-class TypeTest extends RulesDataMatcherTestBase {
+class StringTypeDataMatcherTest extends RulesUnitTestBase {
 
   /**
    * The condition to be tested.
@@ -27,7 +28,7 @@ class TypeTest extends RulesDataMatcherTestBase {
    */
   public function setUp() {
     parent::setUp();
-    $this->matcher = new Type([], 'foo_bar', [], $this->dataProcessorManager);
+    $this->matcher = TypeDataMatcher::create();
   }
 
   /**

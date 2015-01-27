@@ -9,6 +9,7 @@ namespace Drupal\rules\DataMatcher;
 
 use Drupal\rules\DataProcessor\LowercaseDataProcessor;
 use Drupal\rules\DataProcessor\TrimDataProcessor;
+use InvalidArgumentException;
 
 abstract class StringDataMatcher extends DataMatcher implements StringDataMatcherInterface {
 
@@ -22,6 +23,10 @@ abstract class StringDataMatcher extends DataMatcher implements StringDataMatche
    */
   public function setCaseSensitive($fields = DataMatcherInterface::FIELD_BOTH)
   {
+    if (!is_int($fields)) {
+      throw new InvalidArgumentException('Argument "$fields" should be of type int.');
+    }
+
     $this->removeFieldsProcessor(self::MATCHER_ID_CASE_SENSITIVE, $fields);
   }
 
@@ -32,6 +37,10 @@ abstract class StringDataMatcher extends DataMatcher implements StringDataMatche
    */
   public function setCaseInsensitive($fields = DataMatcherInterface::FIELD_BOTH)
   {
+    if (!is_int($fields)) {
+      throw new InvalidArgumentException('Argument "$fields" should be of type int.');
+    }
+
     $this->addFieldsProcessor(self::MATCHER_ID_CASE_SENSITIVE, $fields, new LowercaseDataProcessor());
   }
 
@@ -42,6 +51,10 @@ abstract class StringDataMatcher extends DataMatcher implements StringDataMatche
    */
   public function setTrimmed($fields = DataMatcherInterface::FIELD_BOTH)
   {
+    if (!is_int($fields)) {
+      throw new InvalidArgumentException('Argument "$fields" should be of type int.');
+    }
+
     $this->addFieldsProcessor(self::MATCHER_ID_TRIM, $fields, new TrimDataProcessor());
   }
 
@@ -52,6 +65,10 @@ abstract class StringDataMatcher extends DataMatcher implements StringDataMatche
    */
   public function unsetTrimmed($fields = DataMatcherInterface::FIELD_BOTH)
   {
+    if (!is_int($fields)) {
+      throw new InvalidArgumentException('Argument "$fields" should be of type int.');
+    }
+
     $this->removeFieldsProcessor(self::MATCHER_ID_TRIM, $fields);
   }
 

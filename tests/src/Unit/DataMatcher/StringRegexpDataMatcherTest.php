@@ -2,19 +2,19 @@
 
 /**
  * @file
- * Contains \Drupal\Tests\rules\Unit\Plugin\RulesDataMatcher\RegexpTest.
+ * Contains \Drupal\Tests\rules\Unit\DataMatcher\RegexpDataMatcherTest.
  */
 
-namespace Drupal\Tests\rules\Unit\Plugin\RulesDataMatcher\String;
+namespace Drupal\Tests\rules\Unit\DataMatcher;
 
-use Drupal\Tests\rules\Unit\Plugin\RulesDataMatcher\RulesDataMatcherTestBase;
-use Drupal\rules\Plugin\RulesDataMatcher\String\Regexp;
+use Drupal\rules\DataMatcher\StringRegexpDataMatcher;
+use Drupal\Tests\rules\Unit\RulesUnitTestBase;
 
 /**
- * @coversDefaultClass \Drupal\rules\Plugin\RulesDataMatcher\RegexpMatcher
+ * @coversDefaultClass \Drupal\rules\DataMatcher\StringRegexpDataMatcher
  * @group rules
  */
-class RegexpTest extends RulesDataMatcherTestBase {
+class StringRegexpDataMatcherTest extends RulesUnitTestBase {
 
   /**
    * The condition to be tested.
@@ -28,7 +28,7 @@ class RegexpTest extends RulesDataMatcherTestBase {
    */
   public function setUp() {
     parent::setUp();
-    $this->matcher = new Regexp([], 'foo_bar', [], $this->dataProcessorManager);
+    $this->matcher = StringRegexpDataMatcher::create();
   }
 
   /**

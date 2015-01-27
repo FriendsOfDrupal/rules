@@ -2,24 +2,24 @@
 
 /**
  * @file
- * Contains \Drupal\Tests\rules\Unit\Plugin\RulesDataMatcher\StringEqualsTest.
+ * Contains \Drupal\Tests\rules\Unit\DataMatcher\StringEqualsDataMatcherTest.
  */
 
-namespace Drupal\Tests\rules\Unit\Plugin\RulesDataMatcher\String;
+namespace Drupal\Tests\rules\Unit\DataMatcher;
 
-use Drupal\Tests\rules\Unit\Plugin\RulesDataMatcher\RulesDataMatcherTestBase;
-use Drupal\rules\Plugin\RulesDataMatcher\String\Equals;
+use Drupal\rules\DataMatcher\StringEqualsDataMatcher;
+use Drupal\Tests\rules\Unit\RulesUnitTestBase;
 
 /**
- * @coversDefaultClass \Drupal\rules\Plugin\RulesDataMatcher\String\Equals
+ * @coversDefaultClass \Drupal\rules\DataMatcher\StringEqualsDataMatcher
  * @group rules
  */
-class StringEqualsTest extends RulesDataMatcherTestBase {
+class StringEqualsDataMatcherTest extends RulesUnitTestBase {
   /**
    * @dataProvider matchesProvider
    */
   public function testMatch($expectedMatchResult, $trim, $case_sensitive, $subject, $object) {
-    $matcher = new Equals([], 'foo_bar', [], $this->dataProcessorManager);
+    $matcher = StringEqualsDataMatcher::create();
 
     if ($case_sensitive) {
       $matcher->setCaseSensitive();

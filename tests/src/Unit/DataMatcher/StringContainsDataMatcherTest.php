@@ -2,26 +2,26 @@
 
 /**
  * @file
- * Contains \Drupal\Tests\rules\Unit\Plugin\RulesDataMatcher\String\ContainsTest.
+ * Contains \Drupal\Tests\rules\Unit\DataMatcher\ContainsDataMatcherTest.
  */
 
-namespace Drupal\Tests\rules\Unit\Plugin\RulesDataMatcher\String;
+namespace Drupal\Tests\rules\Unit\DataMatcher;
 
-use Drupal\Tests\rules\Unit\Plugin\RulesDataMatcher\RulesDataMatcherTestBase;
-use Drupal\rules\Plugin\RulesDataMatcher\String\Contains;
+use Drupal\rules\DataMatcher\StringContainsDataMatcher;
 use Drupal\rules\DataMatcher\DataMatcherInterface;
+use Drupal\Tests\rules\Unit\RulesUnitTestBase;
 
 /**
- * @coversDefaultClass \Drupal\rules\Plugin\RulesDataMatcher\String\Contains
+ * @coversDefaultClass \Drupal\rules\DataMatcher\StringContainsDataMatcher
  * @group rules
  */
-class ContainsTest extends RulesDataMatcherTestBase {
+class StringContainsDataMatcherTest extends RulesUnitTestBase {
   /**
    * @expectedException InvalidArgumentException
    * @expectedExceptionMessage Argument "$fields" should be of type int.
    */
   public function testSetCaseSensitive() {
-    $matcher = new Contains([], 'foo_bar', [], $this->dataProcessorManager);
+    $matcher = StringContainsDataMatcher::create();
 
     $matcher->setCaseSensitive('foo');
   }
@@ -30,7 +30,7 @@ class ContainsTest extends RulesDataMatcherTestBase {
    * @dataProvider caseSensitiveMatchesProvider
    */
   public function testCaseSensitiveMatch($expectedMatchResult, $subject, $object) {
-    $matcher = new Contains([], 'foo_bar', [], $this->dataProcessorManager);
+    $matcher = StringContainsDataMatcher::create();
 
     $matcher->setCaseSensitive();
 
@@ -41,7 +41,7 @@ class ContainsTest extends RulesDataMatcherTestBase {
    * @dataProvider caseInsensitiveMatchesProvider
    */
   public function testCaseInsensitiveMatch($expectedMatchResult, $subject, $object) {
-    $matcher = new Contains([], 'foo_bar', [], $this->dataProcessorManager);
+    $matcher = StringContainsDataMatcher::create();
 
     $matcher->setCaseInsensitive();
 

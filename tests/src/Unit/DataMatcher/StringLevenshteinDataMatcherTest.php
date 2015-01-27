@@ -2,25 +2,25 @@
 
 /**
  * @file
- * Contains \Drupal\Tests\rules\Unit\Plugin\RulesDataMatcher\LevenshteinTest.
+ * Contains \Drupal\Tests\rules\Unit\DataMatcher\LevenshteinDataMatcherTest.
  */
 
-namespace Drupal\Tests\rules\Unit\Plugin\RulesDataMatcher\String;
+namespace Drupal\Tests\rules\Unit\DataMatcher;
 
-use Drupal\Tests\rules\Unit\Plugin\RulesDataMatcher\RulesDataMatcherTestBase;
-use Drupal\rules\Plugin\RulesDataMatcher\String\Levenshtein;
+use Drupal\rules\DataMatcher\StringLevenshteinDataMatcher;
+use Drupal\Tests\rules\Unit\RulesUnitTestBase;
 
 /**
- * @coversDefaultClass \Drupal\rules\RulesDataMatcher\LevenshteinMatcher
+ * @coversDefaultClass \Drupal\rules\DataMatcher\StringLevenshteinDataMatcher
  * @group rules
  */
-class LevenshteinTest extends RulesDataMatcherTestBase {
+class StringLevenshteinDataMatcherTest extends RulesUnitTestBase {
 
   /**
    * @dataProvider caseSensitiveMatchesProvider
    */
   public function testCaseSensitiveMatch($expectedMatchResult, $threshold, $subject, $object) {
-    $matcher = new Levenshtein([], 'foo_bar', [], $this->dataProcessorManager);
+    $matcher = StringLevenshteinDataMatcher::create();
 
     $matcher->setThreshold($threshold);
     $matcher->setCaseSensitive();
@@ -32,7 +32,7 @@ class LevenshteinTest extends RulesDataMatcherTestBase {
    * @dataProvider caseInsensitiveMatchesProvider
    */
   public function testCaseInsensitiveMatch($expectedMatchResult, $threshold, $subject, $object) {
-    $matcher = new Levenshtein([], 'foo_bar', [], $this->dataProcessorManager);
+    $matcher = StringLevenshteinDataMatcher::create();
 
     $matcher->setThreshold($threshold);
     $matcher->setCaseInsensitive();
