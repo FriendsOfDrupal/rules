@@ -5,10 +5,10 @@
  * Contains \Drupal\Tests\rules\Unit\Plugin\RulesDataProcessor\LowercaseTest.
  */
 
-namespace Drupal\Tests\rules\Unit\Plugin\RulesDataProcessor;
+namespace Drupal\Tests\rules\Unit\DataProcessor;
 
 use Drupal\Tests\rules\Unit\RulesUnitTestBase;
-use Drupal\rules\Plugin\RulesDataProcessor\Lowercase;
+use Drupal\rules\DataProcessor\LowercaseDataProcessor;
 
 /**
  * @coversDefaultClass \Drupal\rules\RulesDataProcessor\Lowercase
@@ -19,7 +19,7 @@ class LowercaseTest extends RulesUnitTestBase {
    * @dataProvider stringsProvider
    */
   public function testTrim($expectedMatchResult, $string) {
-    $processor = new Lowercase([], 'rules_data_processor_lowercase', []);
+    $processor = new LowercaseDataProcessor();
 
     $this->assertSame($expectedMatchResult, $processor->process($string));
   }

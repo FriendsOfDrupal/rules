@@ -5,10 +5,10 @@
  * Contains \Drupal\Tests\rules\Unit\Plugin\RulesDataProcessor\TrimTest.
  */
 
-namespace Drupal\Tests\rules\Unit\Plugin\RulesDataProcessor;
+namespace Drupal\Tests\rules\Unit\DataProcessor;
 
 use Drupal\Tests\rules\Unit\RulesUnitTestBase;
-use Drupal\rules\Plugin\RulesDataProcessor\NumericOffset;
+use Drupal\rules\DataProcessor\NumericOffsetDataProcessor;
 
 /**
  * @coversDefaultClass \Drupal\rules\RulesDataProcessor\NumericOffset
@@ -19,7 +19,7 @@ class NumericOffsetTest extends RulesUnitTestBase {
    * @dataProvider stringsProvider
    */
   public function testNumericOffset($expectedMatchResult, $offset, $value) {
-    $processor = new NumericOffset(['offset' => $offset], 'foo_bar', []);
+    $processor = new NumericOffsetDataProcessor($offset);
 
     $this->assertSame($expectedMatchResult, $processor->process($value));
   }
