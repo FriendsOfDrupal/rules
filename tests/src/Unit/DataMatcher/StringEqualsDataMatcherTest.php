@@ -106,9 +106,9 @@ class StringEqualsDataMatcherTest extends RulesUnitTestBase {
 
   public function caseInsensitiveUntrimmedMatchesProvider() {
     return array(
-      array(FALSE,  'foo ', ' foo'),
+      array(FALSE, 'foo ', ' foo'),
       array(TRUE,  'foo',  'foo'),
-      array(FALSE,  'foo ', ' FOO'),
+      array(FALSE, 'foo ', ' FOO'),
       array(FALSE, 'foo ', ' fo'),
       array(TRUE,  'foo',  'FOO'),
       array(FALSE, 'foo ', ' FO'),
