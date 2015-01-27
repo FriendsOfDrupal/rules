@@ -51,7 +51,7 @@ abstract class RulesDataMatcherBase extends PluginBase implements ContainerFacto
 
     $this->dataProcessorManager = $data_processor_manager;
 
-    $this->dataMatcherDelegate = $this->createDelegateInstance();
+    $this->dataMatcherDelegate = $this->createDelegateInstance($configuration);
   }
 
   /**

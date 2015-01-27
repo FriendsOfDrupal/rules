@@ -25,8 +25,10 @@ class NumericOffset extends RulesDataProcessorBase {
   /**
    * {@inheritdoc}
    */
-  public function createDelegateInstance() {
-    return new NumericOffsetDataProcessor();
+  public function createDelegateInstance(array $configuration = array()) {
+    $offset = isset($configuration['offset']) ? $configuration['offset'] : 0;
+
+    return new NumericOffsetDataProcessor($offset);
   }
 
 }

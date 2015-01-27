@@ -35,7 +35,7 @@ abstract class RulesDataProcessorBase extends PluginBase implements DataProcesso
   public function __construct(array $configuration, $plugin_id, $plugin_definition) {
     parent::__construct($configuration, $plugin_id, $plugin_definition);
 
-    $this->dataProcessorDelegate = $this->createDelegateInstance();
+    $this->dataProcessorDelegate = $this->createDelegateInstance($configuration);
   }
 
   /**

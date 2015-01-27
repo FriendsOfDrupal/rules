@@ -24,7 +24,7 @@ class Type extends RulesDataMatcherBase {
   /**
    * {@inheritdoc}
    */
-  public function createDelegateInstance() {
+  public function createDelegateInstance(array $configuration = array()) {
     return TypeDataMatcher::create();
   }
 

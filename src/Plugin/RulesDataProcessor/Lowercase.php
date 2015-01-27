@@ -22,7 +22,7 @@ class Lowercase extends RulesDataProcessorBase {
   /**
    * {@inheritdoc}
    */
-  public function createDelegateInstance() {
+  public function createDelegateInstance(array $configuration = array()) {
     return new LowercaseDataProcessor();
   }
 

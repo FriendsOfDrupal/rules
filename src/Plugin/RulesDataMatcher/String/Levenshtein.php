@@ -24,7 +24,7 @@ class Levenshtein extends RulesStringDataMatcherBase {
   /**
    * {@inheritdoc}
    */
-  public function createDelegateInstance() {
+  public function createDelegateInstance(array $configuration = array()) {
     return StringLevenshteinDataMatcher::create();
   }
 
