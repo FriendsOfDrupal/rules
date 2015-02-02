@@ -7,7 +7,7 @@
 
 namespace Drupal\rules\DataMatcher;
 
-class TypeDataMatcher extends DataMatcher {
+final class TypeDataMatcher extends DataMatcher {
 
   /**
    * @param object|string $subject

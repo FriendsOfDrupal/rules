@@ -7,7 +7,7 @@
 
 namespace Drupal\rules\DataMatcher;
 
-class StringEqualsDataMatcher extends StringDataMatcher {
+final class StringEqualsDataMatcher extends StringDataMatcher {
 
   /**
    * {@inheritdoc}

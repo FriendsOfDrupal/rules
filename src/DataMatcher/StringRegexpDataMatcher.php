@@ -7,7 +7,7 @@
 
 namespace Drupal\rules\DataMatcher;
 
-class StringRegexpDataMatcher extends StringDataMatcher {
+final class StringRegexpDataMatcher extends StringDataMatcher {
 
   /**
    * @var int

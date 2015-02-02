@@ -7,7 +7,7 @@
 
 namespace Drupal\rules\DataMatcher;
 
-class StringLevenshteinDataMatcher extends StringDataMatcher {
+final class StringLevenshteinDataMatcher extends StringDataMatcher {
 
   /**
    * @var int
