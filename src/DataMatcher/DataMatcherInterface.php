@@ -20,7 +20,11 @@ interface DataMatcherInterface {
   const FIELD_BOTH    = 3;
 
   /**
-   * Decides whether the rule(s) implemented by the strategy matches the supplied value.
+   * Decides whether a subject's value matches an object's one
+   * given the concrete matching rule.
+   *
+   * The semantics of the DataMatcher can be expressed in the form of a simple
+   * statement where a subject A matches the object B.
    *
    * @param mixed $subject The subject to be matched
    * @param mixed $object The object to use for the match
