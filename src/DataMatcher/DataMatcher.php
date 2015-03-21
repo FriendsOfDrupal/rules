@@ -9,6 +9,8 @@ namespace Drupal\rules\DataMatcher;
 
 use Drupal\rules\DataProcessor\DataProcessorCollection;
 use Drupal\rules\DataProcessor\DataProcessorInterface;
+use Drupal\rules\DataMatcher\Argument\DataMatcherArgument;
+use Symfony\Component\Validator\Constraint;
 
 /**
  * Base abstract class for Data Matchers.
@@ -26,12 +28,31 @@ abstract class DataMatcher implements DataMatcherInterface {
   protected $objectProcessors;
 
   /**
+   * @var Constraint
+   */
+  protected $subjectConstraints;
+
+  /**
+   * @var Constraint
+   */
+  protected $objectConstraints;
+
+  /**
    * @param DataProcessorCollection $subjectProcessors
    * @param DataProcessorCollection $objectProcessors
+   * @param Constraint $subjectConstraints
+   * @param Constraint $objectConstraints
    */
-  public function __construct(DataProcessorCollection $subjectProcessors, DataProcessorCollection $objectProcessors) {
+  public function __construct(
+    DataProcessorCollection $subjectProcessors,
+    DataProcessorCollection $objectProcessors,
+    Constraint $subjectConstraints = null,
+    Constraint $objectConstraints = null
+  ) {
     $this->subjectProcessors = $subjectProcessors;
     $this->objectProcessors = $objectProcessors;
+    $this->subjectConstraints = $subjectConstraints;
+    $this->objectConstraints = $objectConstraints;
   }
 
   /**
@@ -83,9 +104,12 @@ abstract class DataMatcher implements DataMatcherInterface {
    * {@inheritdoc}
    */
   public function match($subject, $object) {
+    $processedSubject = $this->subjectProcessors->process($subject);
+    $processedObject = $this->objectProcessors->process($object);
+
     return $this->doMatch(
-      $this->subjectProcessors->process($subject),
-      $this->objectProcessors->process($object)
+      new DataMatcherArgument($processedSubject, $this->subjectConstraints),
+      new DataMatcherArgument($processedObject, $this->objectConstraints)
     );
   }
 
@@ -97,6 +121,6 @@ abstract class DataMatcher implements DataMatcherInterface {
    *
    * @return boolean
    */
-  abstract protected function doMatch($subject, $object);
+  abstract protected function doMatch(DataMatcherArgument $subject, DataMatcherArgument $object);
 
 }

@@ -7,6 +7,8 @@
 
 namespace Drupal\rules\DataMatcher;
 
+use Drupal\rules\DataMatcher\Argument\DataMatcherArgument;
+
 final class TypeDataMatcher extends DataMatcher {
 
   /**
@@ -15,12 +17,12 @@ final class TypeDataMatcher extends DataMatcher {
    *
    * @return boolean
    */
-  protected function doMatch($subject, $object) {
-    if (is_object($subject) && $subject instanceof $object) {
+  protected function doMatch(DataMatcherArgument $subject, DataMatcherArgument $object) {
+    if (is_object($subject->getValue()) && ltrim(get_class($subject->getValue()), '\\') === ltrim($object->getValue(), '\\')) {
       return TRUE;
     }
 
-    if ($object === gettype($subject)) {
+    if ($object->getValue() === gettype($subject->getValue())) {
       return TRUE;
     }
 

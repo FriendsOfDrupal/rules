@@ -7,6 +7,8 @@
 
 namespace Drupal\rules\DataMatcher;
 
+use Drupal\rules\DataMatcher\Argument\DataMatcherArgument;
+
 final class StringContainsDataMatcher extends StringDataMatcher {
 
   /**
@@ -25,8 +27,8 @@ final class StringContainsDataMatcher extends StringDataMatcher {
   /**
    * {@inheritdoc}
    */
-  protected function doMatch($subject, $object) {
-    return FALSE !== strpos($subject, $object, $this->offset);
+  protected function doMatch(DataMatcherArgument $subject, DataMatcherArgument $object) {
+    return FALSE !== strpos($subject->getValue(), $object->getValue(), $this->offset);
   }
 
 }

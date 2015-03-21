@@ -7,6 +7,8 @@
 
 namespace Drupal\rules\DataMatcher;
 
+use Drupal\rules\DataMatcher\Argument\DataMatcherArgument;
+
 final class StringRegexpDataMatcher extends StringDataMatcher {
 
   /**
@@ -38,10 +40,10 @@ final class StringRegexpDataMatcher extends StringDataMatcher {
   /**
    * {@inheritdoc}
    */
-  protected function doMatch($subject, $object) {
+  protected function doMatch(DataMatcherArgument $subject, DataMatcherArgument $object) {
     $matches = array();
 
-    return 1 === preg_match($object, $subject, $matches, $this->flags, $this->offset);
+    return 1 === preg_match($object->getValue(), $subject->getValue(), $matches, $this->flags, $this->offset);
   }
 
 }

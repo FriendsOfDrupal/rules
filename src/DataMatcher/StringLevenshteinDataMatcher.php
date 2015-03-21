@@ -7,6 +7,8 @@
 
 namespace Drupal\rules\DataMatcher;
 
+use Drupal\rules\DataMatcher\Argument\DataMatcherArgument;
+
 final class StringLevenshteinDataMatcher extends StringDataMatcher {
 
   /**
@@ -35,8 +37,8 @@ final class StringLevenshteinDataMatcher extends StringDataMatcher {
   /**
    * {@inheritdoc}
    */
-  protected function doMatch($subject, $object) {
-    return $this->getThreshold() >= levenshtein($subject, $object);
+  protected function doMatch(DataMatcherArgument $subject, DataMatcherArgument $object) {
+    return $this->getThreshold() >= levenshtein($subject->getValue(), $object->getValue());
   }
 
 }

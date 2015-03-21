@@ -2,20 +2,20 @@
 
 /**
  * @file
- * Contains \Drupal\rules\Plugin\RulesDataMatcher\StringEqualsDataMatcher.
+ * Contains \Drupal\rules\Plugin\RulesDataMatcher\ArrayKeyExistsDataMatcher.
  */
 
 namespace Drupal\rules\DataMatcher;
 
 use Drupal\rules\DataMatcher\Argument\DataMatcherArgument;
 
-final class StringEqualsDataMatcher extends StringDataMatcher {
+final class ArrayHasKeyDataMatcher extends DataMatcher {
 
   /**
    * {@inheritdoc}
    */
   protected function doMatch(DataMatcherArgument $subject, DataMatcherArgument $object) {
-    return $object->getValue() === $subject->getValue();
+    return isset($subject->getValue()[$object->getValue()]);
   }
 
 }
