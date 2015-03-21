@@ -2,10 +2,10 @@
 
 /**
  * @file
- * Contains \Drupal\rules\Plugin\RulesExpressionPluginManager.
+ * Contains \Drupal\rules\Context\RulesExpressionPluginManager.
  */
 
-namespace Drupal\rules\Plugin;
+namespace Drupal\rules\Context;
 
 use Drupal\Core\Extension\ModuleHandlerInterface;
 use Drupal\Core\Plugin\DefaultPluginManager;
@@ -15,7 +15,7 @@ use Drupal\Core\Plugin\DefaultPluginManager;
  *
  * @see \Drupal\rules\DataMatcher\DataMatcherInterface
  */
-class RulesDataMatcherPluginManager extends DefaultPluginManager {
+class DataMatcherPluginManager extends DefaultPluginManager {
 
   /**
    * {@inheritdoc}

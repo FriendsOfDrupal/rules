@@ -11,7 +11,7 @@ use Drupal\Tests\rules\Unit\RulesUnitTestBase;
 use Drupal\rules\DataProcessor\TrimDataProcessor;
 
 /**
- * @coversDefaultClass \Drupal\rules\RulesDataProcessor\Trim
+ * @coversDefaultClass \Drupal\rules\DataProcessor\TrimDataProcessor
  * @group rules
  */
 class TrimTest extends RulesUnitTestBase {

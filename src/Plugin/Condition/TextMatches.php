@@ -9,9 +9,9 @@ namespace Drupal\rules\Plugin\Condition;
 
 use Symfony\Component\DependencyInjection\ContainerInterface;
 use Drupal\Core\Plugin\ContainerFactoryPluginInterface;
-use Drupal\rules\Engine\RulesConditionBase;
+use Drupal\rules\Core\RulesConditionBase;
 use Drupal\rules\DataMatcher\DataMatcherInterface;
-use Drupal\rules\Plugin\RulesDataMatcherPluginManager;
+use Drupal\rules\Context\DataMatcherPluginManager;
 
 /**
  * Provides a 'Text matches' condition.
@@ -41,7 +41,7 @@ class TextMatches extends RulesConditionBase implements ContainerFactoryPluginIn
   /**
    * The data processor plugin manager used to process context variables.
    *
-   * @var \Drupal\rules\Plugin\RulesDataMatcherPluginManager
+   * @var \Drupal\rules\Context\DataMatcherPluginManager
    */
   protected $dataMatcherManager;
 
@@ -55,10 +55,10 @@ class TextMatches extends RulesConditionBase implements ContainerFactoryPluginIn
    *   The plugin ID for the plugin instance.
    * @param mixed $plugin_definition
    *   The plugin implementation definition.
-   * @param \Drupal\rules\Plugin\RulesDataMatcherPluginManager $data_matcher_manager
+   * @param \Drupal\rules\Context\DataMatcherPluginManager $data_matcher_manager
    *   The alias manager service.
    */
-  public function __construct(array $configuration, $plugin_id, $plugin_definition, RulesDataMatcherPluginManager $data_matcher_manager) {
+  public function __construct(array $configuration, $plugin_id, $plugin_definition, DataMatcherPluginManager $data_matcher_manager) {
     parent::__construct($configuration, $plugin_id, $plugin_definition);
     $this->dataMatcherManager = $data_matcher_manager;
   }

@@ -14,6 +14,7 @@ use Drupal\Core\DependencyInjection\ContainerBuilder;
 use Drupal\Core\TypedData\TypedDataManager;
 use Drupal\rules\Context\DataProcessorManager;
 use Drupal\rules\Engine\ExpressionPluginManager;
+use Drupal\rules\Context\DataMatcherPluginManager;
 use Drupal\Tests\UnitTestCase;
 
 /**
@@ -50,6 +51,11 @@ abstract class RulesIntegrationTestBase extends UnitTestCase {
    * @var \Drupal\rules\Engine\ExpressionPluginManager
    */
   protected $rulesExpressionManager;
+
+  /**
+   * @var \Drupal\rules\Context\DataMatcherPluginManager
+   */
+  protected $rulesDataMatcherManager;
 
   /**
    * @var \Drupal\rules\Context\DataProcessorManager
@@ -137,11 +143,14 @@ abstract class RulesIntegrationTestBase extends UnitTestCase {
       ->disableOriginalConstructor()
       ->getMock();
 
+    $this->rulesDataMatcherManager = new DataMatcherPluginManager($this->namespaces, $this->moduleHandler);
+
     $container->set('path.alias_manager', $this->aliasManager);
     $container->set('plugin.manager.action', $this->actionManager);
     $container->set('plugin.manager.condition', $this->conditionManager);
     $container->set('plugin.manager.rules_expression', $this->rulesExpressionManager);
-    $container->set('plugin.manager.rules_data_processor', $this->rulesExpressionManager);
+    $container->set('plugin.manager.rules_data_processor', $this->rulesDataProcessorManager);
+    $container->set('plugin.manager.rules_data_matcher', $this->rulesDataMatcherManager);
     $container->set('typed_data_manager', $this->typedDataManager);
     $container->set('string_translation', $this->getStringTranslationStub());
 

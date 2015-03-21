@@ -12,7 +12,7 @@ use Drupal\Core\Plugin\PluginBase;
 use Drupal\rules\DelegatorInterface;
 use Drupal\rules\DataMatcher\DataMatcherBuilder;
 use Drupal\rules\DataMatcher\DataMatcherInterface;
-use Drupal\rules\Plugin\RulesDataProcessorManager;
+use Drupal\rules\Context\DataProcessorManager as RulesDataProcessorManager;
 use Symfony\Component\DependencyInjection\ContainerInterface;
 
 /**

@@ -36,7 +36,7 @@ class TextMatchesTest extends RulesIntegrationTestBase {
   /**
    * Tests the summary.
    *
-   * @covers ::summary()
+   * @covers ::summary
    */
   public function testSummary() {
     $this->assertEquals('Text matches', $this->condition->summary());
@@ -47,7 +47,7 @@ class TextMatchesTest extends RulesIntegrationTestBase {
    *
    * @dataProvider matchesProvider
    *
-   * @covers ::evaluate()
+   * @covers ::evaluate
    */
   public function testEvaluate($expectedMatchResult, $operator, $subject, $object) {
     $this->condition

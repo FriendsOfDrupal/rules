@@ -11,7 +11,7 @@ use Drupal\Tests\rules\Unit\RulesUnitTestBase;
 use Drupal\rules\DataProcessor\LowercaseDataProcessor;
 
 /**
- * @coversDefaultClass \Drupal\rules\RulesDataProcessor\Lowercase
+ * @coversDefaultClass \Drupal\rules\DataProcessor\LowercaseDataProcessor
  * @group rules
  */
 class LowercaseTest extends RulesUnitTestBase {

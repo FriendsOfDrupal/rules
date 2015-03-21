@@ -11,7 +11,7 @@ use Drupal\Tests\rules\Unit\RulesUnitTestBase;
 use Drupal\rules\DataProcessor\NumericOffsetDataProcessor;
 
 /**
- * @coversDefaultClass \Drupal\rules\RulesDataProcessor\NumericOffset
+ * @coversDefaultClass \Drupal\rules\DataProcessor\NumericOffsetDataProcessor
  * @group rules
  */
 class NumericOffsetTest extends RulesUnitTestBase {
